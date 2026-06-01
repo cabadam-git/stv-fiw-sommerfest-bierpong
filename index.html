@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIW Bierpongturnier 26 - Anmeldung</title>
+    <title>FIW Bierpongturnier 26 - ABGESAGT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -37,6 +37,84 @@
             text-align: left;
         }
 
+        /* Cancellation Banner */
+        .cancellation-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .cancellation-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cancellation-icon {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cancellation-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cancellation-reason {
+            font-size: 1.1rem;
+            color: #fecaca;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cancellation-date {
+            font-size: 0.9rem;
+            color: #fca5a5;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Overlay for disabled content */
+        .disabled-overlay {
+            position: relative;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .disabled-overlay::after {
+            content: 'ABGESAGT';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 2rem;
+            font-weight: 700;
+            color: #dc2626;
+            border: 3px solid #dc2626;
+            padding: 8px 24px;
+            border-radius: 8px;
+            background: rgba(26, 37, 45, 0.9);
+            z-index: 10;
+        }
+
         /* Header */
         .logo-section {
             text-align: center;
@@ -46,7 +124,7 @@
         .logo {
             width: 80px;
             height: 80px;
-            background: #c15433;
+            background: #6b7280;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -62,12 +140,13 @@
         h1 {
             font-size: 1.6rem;
             font-weight: 700;
-            color: #ffffff;
+            color: #9ca3af;
             margin-bottom: 4px;
+            text-decoration: line-through;
         }
 
         .subtitle {
-            color: #89a2b6;
+            color: #6b7280;
             font-size: 0.95rem;
         }
 
@@ -105,13 +184,13 @@
 
         .detail-item i {
             font-size: 1.4rem;
-            color: #c15433;
+            color: #6b7280;
             margin-bottom: 8px;
         }
 
         .detail-label {
             font-size: 0.75rem;
-            color: #89a2b6;
+            color: #6b7280;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 4px;
@@ -119,8 +198,9 @@
 
         .detail-value {
             font-weight: 600;
-            color: #ffffff;
+            color: #9ca3af;
             font-size: 0.95rem;
+            text-decoration: line-through;
         }
 
         /* Steps Box */
@@ -138,7 +218,7 @@
         .step-number {
             width: 32px;
             height: 32px;
-            background: #c15433;
+            background: #6b7280;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -156,13 +236,13 @@
         .step-content h3 {
             font-size: 1rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #9ca3af;
             margin-bottom: 6px;
         }
 
         .step-content p {
             font-size: 0.9rem;
-            color: #b8c9d6;
+            color: #6b7280;
             line-height: 1.5;
         }
 
@@ -173,6 +253,7 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 16px;
+            opacity: 0.6;
         }
 
         .hint-header {
@@ -183,24 +264,24 @@
         }
 
         .hint-header i {
-            color: #c15433;
+            color: #6b7280;
             font-size: 1.2rem;
         }
 
         .hint-title {
             font-weight: 600;
-            color: #c15433;
+            color: #9ca3af;
             font-size: 1rem;
         }
 
         .hint-text {
-            color: #b8c9d6;
+            color: #6b7280;
             font-size: 0.9rem;
             line-height: 1.6;
         }
 
         .hint-text strong {
-            color: #ffffff;
+            color: #9ca3af;
         }
 
         /* Buttons Box */
@@ -222,44 +303,30 @@
             transition: all 0.2s;
             width: 100%;
             text-align: center;
+            background: #374151;
+            color: #9ca3af;
+            cursor: not-allowed;
         }
 
         .btn:disabled {
-            background-color: lightslategray !important; 
-            color: black !important;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
+            background-color: #374151 !important; 
+            color: #9ca3af !important;
         }
 
         .btn-primary {
-            background: #c15433;
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background: #d46544;
+            background: #374151;
+            color: #9ca3af;
         }
 
         .btn-accent {
-            background: #425d70;
-            color: #ffffff;
-        }
-
-        .btn-accent:hover {
-            background: #4f6d80;
+            background: #374151;
+            color: #9ca3af;
         }
 
         .btn-secondary {
             background: transparent;
-            color: #89a2b6;
-            border: 1.5px solid #425d70;
-        }
-
-        .btn-secondary:hover {
-            border-color: #89a2b6;
-            color: #ffffff;
+            color: #6b7280;
+            border: 1.5px solid #4b5563;
         }
 
         /* Contact Box */
@@ -275,6 +342,7 @@
             gap: 16px;
             width: 100%;
             padding: 0;
+            cursor: pointer;
         }
 
         .contact-icon {
@@ -352,10 +420,69 @@
             color: #89a2b6;
             font-size: 0.85rem;
         }
+
+        /* Info Box for refund/next steps */
+        .info-box {
+            background: #1e3a5f;
+            border: 1px solid #3b82f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .info-box-header i {
+            color: #60a5fa;
+            font-size: 1.2rem;
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: #93c5fd;
+            font-size: 1rem;
+        }
+
+        .info-box-text {
+            color: #bfdbfe;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-box-text a {
+            color: #93c5fd;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Cancellation Banner -->
+        <div class="cancellation-banner">
+            <div class="cancellation-icon">
+                <i class="fas fa-cloud-showers-heavy"></i>
+            </div>
+            <div class="cancellation-title">❌ ABGESAGT</div>
+            <div class="cancellation-reason">Aufgrund ungünstiger Wetterbedingungen</div>
+            <div class="cancellation-date">Stand: 1. Juni 2026</div>
+        </div>
+
+        <!-- Info Box for Refunds/Questions -->
+        <div class="info-box">
+            <div class="info-box-header">
+                <i class="fas fa-circle-info"></i>
+                <div class="info-box-title">Information zu Tickets & Rückerstattungen</div>
+            </div>
+            <div class="info-box-text">
+                Bereits gekaufte Tickets werden automatisch zurückerstattet. Bei Fragen kontaktiert uns bitte per E-Mail unter <a href="mailto:fiw.stv@thws.de?subject=Bierpong26 - Stornierung">fiw.stv@thws.de</a>.
+            </div>
+        </div>
+
         <!-- Header -->
         <div class="logo-section">
             <div class="logo">
@@ -366,7 +493,7 @@
         </div>
 
         <!-- Event Details Box -->
-        <div class="box">
+        <div class="box disabled-overlay">
             <div class="details-grid">
                 <div class="detail-item">
                     <i class="fas fa-calendar-day"></i>
@@ -382,7 +509,7 @@
         </div>
 
         <!-- Steps Box -->
-        <div class="box">
+        <div class="box disabled-overlay">
             <div class="box-title">
                 <i class="fas fa-clipboard-list"></i>
                 So funktioniert's
@@ -416,7 +543,7 @@
         </div>
 
         <!-- Hint Box -->
-        <div class="hint-box">
+        <div class="hint-box disabled-overlay">
             <div class="hint-header">
                 <i class="fas fa-circle-info"></i>
                 <div class="hint-title">Wichtig: Ticket = verbindliche Anmeldung</div>
@@ -431,19 +558,19 @@
         <!-- Buttons Box -->
         <div class="box">
             <div class="button-group">
-                <button type="button" class="btn btn-primary" onclick="window.open('https://www.score7.io/tournaments/dhyznu6t3z/register', '_blank')">
-                    <i class="fas fa-user-plus"></i>
-                    Jetzt registrieren
+                <button type="button" class="btn btn-primary" disabled>
+                    <i class="fas fa-ban"></i>
+                    Registrierung geschlossen
                 </button>
 
-                <button type="button" class="btn btn-accent" onclick="window.open('https://shop.ticketpay.de/4SY1VYWW', '_blank')">
-                    <i class="fas fa-ticket"></i>
-                    Ticket kaufen
+                <button type="button" class="btn btn-accent" disabled>
+                    <i class="fas fa-ban"></i>
+                    Ticketkauf nicht möglich
                 </button>
 
-                <button type="button" class="btn btn-secondary" onclick="window.open('https://beerpong.de/pages/party-regeln', '_blank')">
+                <button type="button" class="btn btn-secondary" disabled>
                     <i class="fas fa-book-open"></i>
-                    Turnierregeln (werden evtl. angepasst)
+                    Turnierregeln
                 </button>
             </div>
         </div>
